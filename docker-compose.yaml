@@ -1,0 +1,22 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8080:80"
+    networks:
+      - net
+  db:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+networks:
+  net:
+    driver: bridge
