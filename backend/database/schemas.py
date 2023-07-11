@@ -5,6 +5,7 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     email: str
     password: str
+    role_id: int = 1  # normal "user" is default
 
 
 class UserCreate(UserBase):
@@ -13,7 +14,6 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    role_id: int
 
     class Config:
         from_attributes = True
@@ -37,7 +37,8 @@ class Role(RoleBase):
 
 # projectDeveloper
 class ProjectDeveloperBase(BaseModel):
-    pass
+    project_id: int
+    developer_id: int
 
 
 class ProjectDeveloperCreate(ProjectDeveloperBase):
@@ -46,17 +47,17 @@ class ProjectDeveloperCreate(ProjectDeveloperBase):
 
 class ProjectDeveloper(ProjectDeveloperBase):
     id: int
-    project_id: int
-    developer_id: int
 
     class Config:
         from_attributes = True
 
 
-# proyect
+# project
 class ProjectBase(BaseModel):
     name: str
     description: str
+    manager_id: int
+    project_developers: list[ProjectDeveloper] = []
 
 
 class ProjectCreate(ProjectBase):
@@ -65,8 +66,6 @@ class ProjectCreate(ProjectBase):
 
 class Project(ProjectBase):
     id: int
-    manager_id: int
-    proyectDevelopers: list[ProjectDeveloper] = []
 
     class Config:
         from_attributes = True
@@ -76,6 +75,7 @@ class Project(ProjectBase):
 class ManagerBase(BaseModel):
     first_name: str
     last_name: str
+    projects: list[Project] = []
 
 
 class ManagerCreate(ManagerBase):
@@ -84,7 +84,6 @@ class ManagerCreate(ManagerBase):
 
 class Manager(ManagerBase):
     id: int
-    projects: list[Project] = []
 
     class Config:
         from_attributes = True
@@ -94,6 +93,7 @@ class Manager(ManagerBase):
 class DeveloperBase(BaseModel):
     first_name: str
     last_name: str
+    project_developers: list[ProjectDeveloper] = []
 
 
 class DeveloperCreate(DeveloperBase):
@@ -102,7 +102,6 @@ class DeveloperCreate(DeveloperBase):
 
 class Developer(DeveloperBase):
     id: int
-    proyectDevelopers: list[ProjectDeveloper] = []
 
     class Config:
         from_attributes = True

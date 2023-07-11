@@ -16,11 +16,13 @@ def get_user_by_email(db: Session, email: str):
 
 
 def create_user(db: Session, user: UserCreate):
-    new_user = User(email=user.email, password=user.password + "fakehash")
-    db.add(new_user)
+    db_user = User(
+        email=user.email, password=user.password + "fakehash", role_id=user.role_id
+    )
+    db.add(db_user)
     db.commit()
-    db.refresh(new_user)
-    return new_user
+    db.refresh(db_user)
+    return db_user
 
 
 def update_user(db: Session, user_data):
@@ -28,7 +30,6 @@ def update_user(db: Session, user_data):
     db.commit()
 
 
-def delete_user(db: Session, id: int):
-    db_user = db.query(User).filter(User.id == id).first()
+def delete_user(db: Session, db_user: User):
     db.delete(db_user)
     db.commit()

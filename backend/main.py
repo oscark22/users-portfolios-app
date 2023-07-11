@@ -5,7 +5,14 @@ import uvicorn
 from database import models, schemas
 from database.settings import SessionLocal, engine
 
-from routers import users_router
+from routers import (
+    managers_router,
+    users_router,
+    roles_router,
+    developers_router,
+    projects_router,
+    project_developer_router,
+)
 import controllers
 
 
@@ -15,6 +22,11 @@ app = FastAPI()
 
 
 app.include_router(users_router.router)
+app.include_router(roles_router.router)
+app.include_router(managers_router.router)
+app.include_router(developers_router.router)
+app.include_router(projects_router.router)
+app.include_router(project_developer_router.router)
 
 
 @app.get("/")
