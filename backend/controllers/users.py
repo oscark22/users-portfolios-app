@@ -7,7 +7,7 @@ def get_all_users(db: Session):
     return db.query(User).all()
 
 
-def get_user(db: Session, user_id: int):
+def get_user_by_id(db: Session, user_id: int):
     return db.query(User).filter(User.id == user_id).first()
 
 
@@ -21,3 +21,14 @@ def create_user(db: Session, user: UserCreate):
     db.commit()
     db.refresh(new_user)
     return new_user
+
+
+def update_user(db: Session, user_data):
+    db.merge(user_data)
+    db.commit()
+
+
+def delete_user(db: Session, id: int):
+    db_user = db.query(User).filter(User.id == id).first()
+    db.delete(db_user)
+    db.commit()
