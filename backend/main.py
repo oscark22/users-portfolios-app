@@ -1,9 +1,11 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from database import models, schemas
 from database.settings import SessionLocal, engine
+
 
 from routers import (
     managers_router,
@@ -19,6 +21,17 @@ import controllers
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 app.include_router(users_router.router)
