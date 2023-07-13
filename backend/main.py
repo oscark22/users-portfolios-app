@@ -14,8 +14,8 @@ from routers import (
     developers_router,
     projects_router,
     project_developer_router,
+    auth_router,
 )
-import controllers
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -40,6 +40,7 @@ app.include_router(managers_router.router)
 app.include_router(developers_router.router)
 app.include_router(projects_router.router)
 app.include_router(project_developer_router.router)
+app.include_router(auth_router.router)
 
 
 @app.get("/")

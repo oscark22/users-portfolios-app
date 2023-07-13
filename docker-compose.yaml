@@ -8,6 +8,8 @@ services:
       - net
     depends_on:
       - db
+    environment:
+      - DATABASE_TARGET=postgres
   db:
     image: postgres
     container_name: postgres
@@ -18,8 +20,13 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+    volumes:
+      - data:/var/lib/postgresql/data
     restart: always
 
 networks:
   net:
     driver: bridge
+
+volumes:
+  data:

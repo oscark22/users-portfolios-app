@@ -1,0 +1,11 @@
+:root {
+  --preferred-color-scheme: light;
+}
+
+html {
+  color-scheme: var(--preferred-color-scheme);
+}
+
+.swal2-popup {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}

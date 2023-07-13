@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
     email: str
     password: str
-    role_id: int = 1  # normal "user" is default
+    role_id: int
 
 
 class UserCreate(UserBase):
@@ -57,7 +57,6 @@ class ProjectBase(BaseModel):
     name: str
     description: str
     manager_id: int
-    project_developers: list[ProjectDeveloper] = []
 
 
 class ProjectCreate(ProjectBase):
@@ -75,7 +74,6 @@ class Project(ProjectBase):
 class ManagerBase(BaseModel):
     first_name: str
     last_name: str
-    projects: list[Project] = []
 
 
 class ManagerCreate(ManagerBase):
@@ -93,7 +91,6 @@ class Manager(ManagerBase):
 class DeveloperBase(BaseModel):
     first_name: str
     last_name: str
-    project_developers: list[ProjectDeveloper] = []
 
 
 class DeveloperCreate(DeveloperBase):
