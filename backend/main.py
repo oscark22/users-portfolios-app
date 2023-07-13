@@ -15,6 +15,7 @@ from routers import (
     projects_router,
     project_developer_router,
     auth_router,
+    servicios_router,
 )
 
 
@@ -41,6 +42,7 @@ app.include_router(developers_router.router)
 app.include_router(projects_router.router)
 app.include_router(project_developer_router.router)
 app.include_router(auth_router.router)
+app.include_router(servicios_router.router)
 
 
 @app.get("/")

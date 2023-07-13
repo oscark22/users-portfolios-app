@@ -29,7 +29,7 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
 
 @router.get("/email/{email}")
 def get_user_by_email(email: str, db: Session = Depends(get_db)):
-    db_user = users.get_user_by_email(db, email=email)
+    db_user = users.get_user_by_username(db, username=email)
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
@@ -37,7 +37,7 @@ def get_user_by_email(email: str, db: Session = Depends(get_db)):
 
 @router.post("/")
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_user = users.get_user_by_email(db, email=user.email)
+    db_user = users.get_user_by_username(db, username=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     return users.create_user(db, user=user)
@@ -49,7 +49,7 @@ def update_user(user_id: int, user_data: UserCreate, db: Session = Depends(get_d
     if not db_user:
         raise HTTPException(status_code=404, detail="User not found")
     encoded_data = jsonable_encoder(user_data)
-    db_user.email = encoded_data["email"]
+    db_user.username = encoded_data["email"]
     db_user.password = encoded_data["password"]
     db_user.role_id = encoded_data["role_id"]
     return users.update_user(db, user_data=db_user)
