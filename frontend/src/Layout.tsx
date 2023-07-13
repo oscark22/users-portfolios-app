@@ -1,6 +1,5 @@
 import { Container, Box, Button } from "@mui/material";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 
 interface ParentComponentProps {
   children: ReactNode;

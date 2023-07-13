@@ -127,8 +127,6 @@ const UpdateProject = () => {
       });
   };
 
-  console.log(managerId);
-
   return (
     <Layout>
       <Box sx={{ display: "flex", justifyContent: "center" }}>

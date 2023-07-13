@@ -16,12 +16,12 @@ router = APIRouter(
 
 @router.get("/")
 def get_all_users(db: Session = Depends(get_db)):
-    return projects.get_all_projects(db)
+    return projects.get_all_projects_data(db)
 
 
 @router.get("/{project_id}")
 def get_project_by_id(project_id: int, db: Session = Depends(get_db)):
-    db_project = projects.get_project_by_id(db, project_id=project_id)
+    db_project = projects.get_project_data_by_id(db, project_id=project_id)
     if not db_project:
         raise HTTPException(status_code=404, detail="Project not found")
     return db_project
@@ -42,7 +42,7 @@ def update_project(
     encoded_data = jsonable_encoder(project_data)
     db_project.name = encoded_data["name"]
     db_project.description = encoded_data["description"]
-    db_project.manager_id = encoded_data["manager_id"]  # bad
+    db_project.manager_id = encoded_data["manager_id"]
     return projects.update_project(db, project_data=db_project)
 
 
