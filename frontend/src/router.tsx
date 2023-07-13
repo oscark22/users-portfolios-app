@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import CreateProject from "./pages/AddProject";
 import UpdateProject from "./pages/UpdateProject";
 import DeleteProject from "./pages/DeleteProject";
+import Panel from "./pages/Panel";
 
 export const appRouter = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const appRouter = createBrowserRouter([
   {
     path: "/project/delete",
     element: <DeleteProject />,
+  },
+  {
+    path: "/panel",
+    element: <Panel />,
   },
 ]);

@@ -14,16 +14,17 @@ const Login = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const data = {
-      email: email,
-      password: password,
-    };
+    const form_data = new FormData();
+
+    form_data.append("username", email);
+    form_data.append("password", password);
+
     base
-      .post("/login", data)
+      .post("/token", form_data)
       .then((response) => {
         if (response.status == 200) {
           MySwal.fire("Success", "Valid login", "success").then(() =>
-            location.replace("/admin")
+            location.replace("/panel")
           );
         } else {
           MySwal.fire("Failed operation", "Login not valid", "error").then(() =>
@@ -56,7 +57,7 @@ const Login = () => {
         >
           <TextField
             required
-            id="email-required"
+            id="username"
             label="Email"
             margin="dense"
             onChange={(e) => setEmail(e.target.value)}
@@ -64,7 +65,7 @@ const Login = () => {
           />
           <TextField
             required
-            id="password-required"
+            id="password"
             label="Password"
             margin="dense"
             onChange={(e) => setPassword(e.target.value)}

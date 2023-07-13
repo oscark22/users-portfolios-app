@@ -120,7 +120,7 @@ const CreateProject = () => {
           />
         </Box>
         <FormControl sx={{ width: "100%", mt: 1 }}>
-          <InputLabel id="manager-label">Admin</InputLabel>
+          <InputLabel id="manager-label">Manager</InputLabel>
           <Select
             labelId="manager-label"
             id="manager-required"
