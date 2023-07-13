@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import ButtonGroupSubmit from "../components/button-group";
 
 const MySwal = withReactContent(Swal);
 
@@ -23,9 +24,11 @@ const Login = () => {
       .post("/token", form_data)
       .then((response) => {
         if (response.status == 200) {
-          MySwal.fire("Success", "Valid login", "success").then(() =>
-            location.replace("/panel")
-          );
+          MySwal.fire(
+            "Success",
+            "The login operation was successful",
+            "success"
+          ).then(() => location.replace("/panel"));
         } else {
           MySwal.fire("Failed operation", "Login not valid", "error").then(() =>
             location.reload()
@@ -71,11 +74,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             fullWidth
           />
-          <Box>
-            <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-              Submit
-            </Button>
-          </Box>
+          <ButtonGroupSubmit link="/" />
         </Box>
       </form>
     </Layout>

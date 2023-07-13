@@ -15,6 +15,7 @@ import { FormEvent, ReactNode, useEffect, useState } from "react";
 import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import ButtonGroupSubmit from "../components/button-group";
 
 const MySwal = withReactContent(Swal);
 
@@ -142,9 +143,7 @@ const CreateProject = () => {
             Select the corresponding manager of the project
           </FormHelperText>
         </FormControl>
-        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-          Submit
-        </Button>
+        <ButtonGroupSubmit link="/panel" />
       </form>
     </Layout>
   );

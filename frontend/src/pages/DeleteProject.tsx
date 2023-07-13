@@ -16,6 +16,7 @@ import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Project } from "../interfaces/Project";
+import ButtonGroupSubmit from "../components/button-group";
 
 const MySwal = withReactContent(Swal);
 
@@ -91,9 +92,7 @@ const DeleteProject = () => {
           </Select>
           <FormHelperText>Select the corresponding project</FormHelperText>
         </FormControl>
-        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-          Submit
-        </Button>
+        <ButtonGroupSubmit link="/panel" />
       </form>
     </Layout>
   );
