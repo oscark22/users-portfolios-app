@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./pages/App";
 import ProjectDisplay from "./pages/ProjectDisplay";
 import Login from "./pages/Login";
-import CreateProject from "./pages/AddProyect";
+import CreateProject from "./pages/AddProject";
+import UpdateProject from "./pages/UpdateProject";
 
 export const appRouter = createBrowserRouter([
   {
@@ -20,5 +21,9 @@ export const appRouter = createBrowserRouter([
   {
     path: "/project/add",
     element: <CreateProject />,
+  },
+  {
+    path: "/project/update",
+    element: <UpdateProject />,
   },
 ]);

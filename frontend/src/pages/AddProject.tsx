@@ -87,7 +87,7 @@ const CreateProject = () => {
         console.log(error);
         MySwal.fire(
           "Failed operation",
-          "No fué posible crear un nuevo proyecto",
+          "The project couldn't be updated",
           "error"
         ).then(() => location.reload());
       });
