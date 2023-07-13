@@ -11,7 +11,7 @@ const CardAction: React.FC<Project> = (props: Project) => {
     <Card sx={{ border: 1, width: "100%" }}>
       <Link
         to={`/project/${props.id}`}
-        state={{ props: props }}
+        state={{ state: props }}
         style={{ textDecoration: "none" }}
       >
         <CardActionArea>

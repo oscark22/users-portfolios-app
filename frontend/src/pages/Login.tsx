@@ -22,26 +22,20 @@ const Login = () => {
       .post("/login", data)
       .then((response) => {
         if (response.status == 200) {
-          MySwal.fire(
-            "Operación exitosa",
-            "Inicio de sesión válido",
-            "success"
-          ).then(() => location.replace("/admin"));
+          MySwal.fire("Success", "Valid login", "success").then(() =>
+            location.replace("/admin")
+          );
         } else {
-          MySwal.fire(
-            "Operación fallida",
-            "Inicio de sesión inválido",
-            "error"
-          ).then(() => location.reload());
+          MySwal.fire("Failed operation", "Login not valid", "error").then(() =>
+            location.reload()
+          );
         }
       })
       .catch((error) => {
         console.log(error);
-        MySwal.fire(
-          "Operación fallida",
-          "Inicio de sesión inválido",
-          "error"
-        ).then(() => location.reload());
+        MySwal.fire("Failed operation", "Login not valid", "error").then(() =>
+          location.reload()
+        );
       });
   };
 

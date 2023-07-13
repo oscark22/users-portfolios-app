@@ -3,35 +3,26 @@ import { base } from "../api/base";
 import { Project } from "../interfaces/Project";
 import { Box, Grid } from "@mui/material";
 import BasicCard from "../components/basic-card";
+import { useLocation } from "react-router-dom";
 
 const CardDisplay = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const location = useLocation();
+  const { state } = location.state;
 
-  useEffect(() => {
-    base
-      .get("/projects")
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  console.log(projects);
+  console.log(state);
 
   return (
     <Box sx={{ display: "flex", width: "100%" }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <div>
-            {projects.map((project) => (
-              <BasicCard
-                key={project.id}
-                id={project.id}
-                description={project.description}
-                developers={project.developers}
-                name={project.name}
-                manager={project.manager}
-              />
-            ))}
-          </div>
+          <BasicCard
+            key={state.id}
+            id={state.id}
+            description={state.description}
+            developers={state.developers}
+            name={state.name}
+            manager={state.manager}
+          />
         </Grid>
       </Grid>
     </Box>
