@@ -15,7 +15,7 @@ router = APIRouter(
 
 
 @router.get("/")
-def get_all_users(db: Session = Depends(get_db)):
+def get_all_projects(db: Session = Depends(get_db)):
     return projects.get_all_projects_data(db)
 
 

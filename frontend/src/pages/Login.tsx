@@ -5,6 +5,7 @@ import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ButtonGroupSubmit from "../components/button-group";
+import { RttRounded } from "@mui/icons-material";
 
 const MySwal = withReactContent(Swal);
 
@@ -28,7 +29,11 @@ const Login = () => {
             "Success",
             "The login operation was successful",
             "success"
-          ).then(() => location.replace("/panel"));
+          ).then(() => {
+            const { access_token, token_type } = response.data;
+            localStorage.setItem("token", access_token);
+            location.replace("/panel");
+          });
         } else {
           MySwal.fire("Failed operation", "Login not valid", "error").then(() =>
             location.reload()
