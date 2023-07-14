@@ -15,13 +15,13 @@ router = APIRouter(
 )
 
 
-@router.get("/open/projectos/")  # equivalent to /projects
+@router.get("/open/proyectos/")  # equivalent to /projects
 def get_all_servicios(
     db: Session = Depends(get_db), current_user: User = Depends(get_current_active_user)
 ):
     return projects.get_all_projects(db)
 
 
-@router.get("/auth/projectos/")
+@router.get("/auth/proyectos/")
 def get_all_servicios(db: Session = Depends(get_db)):
     return projects.get_all_projects(db)

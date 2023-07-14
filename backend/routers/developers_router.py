@@ -50,4 +50,4 @@ def delete_developer(developer_id: int, db: Session = Depends(get_db)):
     db_developer = developers.get_developer_by_id(db, developer_id=developer_id)
     if not db_developer:
         raise HTTPException(status_code=404, detail="Developer not found")
-    return developers.delete_developer(db, db_manager=db_developer)
+    return developers.delete_developer(db, db_developer=db_developer)

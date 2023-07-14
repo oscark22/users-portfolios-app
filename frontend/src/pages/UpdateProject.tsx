@@ -17,7 +17,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Project } from "../interfaces/Project";
 import { Link } from "react-router-dom";
-import ButtonGroupSubmit from "../components/button-group";
+import ButtonGroupSubmit from "../components/ButtonGroupSubmit";
 
 const MySwal = withReactContent(Swal);
 

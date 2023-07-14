@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import ButtonGroupSubmit from "../components/button-group";
+import ButtonGroupSubmit from "../components/ButtonGroupSubmit";
 import { RttRounded } from "@mui/icons-material";
 
 const MySwal = withReactContent(Swal);

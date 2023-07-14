@@ -1,5 +1,5 @@
 import { Box, Button, Container, Typography } from "@mui/material";
-import CardActionDisplay from "../components/card-action-display";
+import CardActionDisplay from "../components/CardActionDisplay";
 import { Link } from "react-router-dom";
 import Layout from "../Layout";
 import { useEffect, useState } from "react";

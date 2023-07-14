@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { Project } from "../interfaces/Project";
-import SingleProjectDisplay from "./project-display";
+import SingleProjectDisplay from "./SingleProjectDisplay";
 
 const bull = (
   <Box

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { base } from "../api/base";
 import { Project } from "../interfaces/Project";
 import { Box, Grid } from "@mui/material";
-import BasicCard from "../components/basic-card";
+import BasicCard from "../components/BasicCard";
 import { useLocation } from "react-router-dom";
-import SingleProjectDisplay from "../components/project-display";
+import SingleProjectDisplay from "../components/SingleProjectDisplay";
 
 const CardDisplay = () => {
   const location = useLocation();

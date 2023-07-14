@@ -15,7 +15,7 @@ import { FormEvent, ReactNode, useEffect, useState } from "react";
 import { base } from "../api/base";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import ButtonGroupSubmit from "../components/button-group";
+import ButtonGroupSubmit from "../components/ButtonGroupSubmit";
 
 const MySwal = withReactContent(Swal);
 
